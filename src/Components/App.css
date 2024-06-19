@@ -104,8 +104,8 @@ body {
   .recipe-card .buttons {
     display: flex;
     justify-content: center;
-    gap: 20px; 
-    margin-top: 10px;
+    gap: 5px; 
+    margin-top: 5px;
     margin-bottom: 10px;
   }
   
