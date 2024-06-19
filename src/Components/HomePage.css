@@ -1,0 +1,34 @@
+.home-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .home-title {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 30px;
+  }
+  
+  .login-button-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .login-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-button:hover {
+    background-color: #45a049;
+  }
+  
