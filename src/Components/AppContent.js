@@ -40,7 +40,7 @@ const AppContent = () => {
 
   return (
     <div className="App">
-      <h1>Tara's Recipes Haven</h1>
+      <h1>TARA'S RECIPES</h1>
       <SearchBar onSearch={handleSearch} />
       {loading ? (
         <p className="loading">Loading...</p>
