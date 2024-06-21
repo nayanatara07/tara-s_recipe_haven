@@ -1,6 +1,7 @@
+// src/components/AppContent.js
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../redux/actions/cartActions';
+import { addToCart } from '../redux/reducers/cartReducer';
 import SearchBar from './SearchBar';
 import RecipeCard from './RecipeCard';
 import { useNavigate } from 'react-router-dom';

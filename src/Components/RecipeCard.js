@@ -1,12 +1,18 @@
-// src/components/RecipeCard.js
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../redux/reducers/cartReducer';
 import { useNavigate } from 'react-router-dom';
 
-const RecipeCard = ({ recipe, onAddToCart }) => {
+const RecipeCard = ({ recipe }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const checkRecipeAvailableAndNavigate = () => {
     navigate(`/recipe/${recipe.recipe_id}`);
+  };
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(recipe)); 
   };
 
   return (
@@ -20,7 +26,7 @@ const RecipeCard = ({ recipe, onAddToCart }) => {
       <span onClick={checkRecipeAvailableAndNavigate} className="view-ingredients-link">
         View More
       </span>
-      <button onClick={() => onAddToCart(recipe)} className="add-to-cart-button">
+      <button onClick={handleAddToCart} className="add-to-cart-button">
         Add to Cart
       </button>
     </div>

@@ -1,7 +1,8 @@
+// src/components/CartPage.js
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { removeFromCart } from '../redux/reducers/cartReducer';
 import { useNavigate } from 'react-router-dom';
-import { removeFromCart } from '../redux/actions/cartActions';
 import './App.css';
 
 const CartPage = () => {
@@ -9,8 +10,8 @@ const CartPage = () => {
   const navigate = useNavigate();
   const cart = useSelector((state) => state.cart.items);
 
-  const handleRemoveFromCart = (index) => {
-    dispatch(removeFromCart(index));
+  const handleRemoveFromCart = (item) => {
+    dispatch(removeFromCart(item));
   };
 
   return (
@@ -23,7 +24,7 @@ const CartPage = () => {
               <h3>{item.title}</h3>
               <img src={item.image_url} alt={item.title} />
               <p>Publisher: {item.publisher}</p>
-              <button onClick={() => handleRemoveFromCart(index)} className="remove-button">
+              <button onClick={() => handleRemoveFromCart(item)} className="remove-button">
                 Remove
               </button>
             </li>
