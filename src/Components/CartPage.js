@@ -1,4 +1,3 @@
-// src/components/CartPage.js
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFromCart } from '../redux/reducers/cartReducer';
@@ -8,7 +7,7 @@ import './App.css';
 const CartPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const cart = useSelector((state) => state.cart.items);
+  const cartItems = useSelector((state) => state.cart.items);
 
   const handleRemoveFromCart = (item) => {
     dispatch(removeFromCart(item));
@@ -17,13 +16,14 @@ const CartPage = () => {
   return (
     <div className="cart-page">
       <h2>Your Cart</h2>
-      {cart.length > 0 ? (
+      {cartItems.length > 0 ? (
         <ul>
-          {cart.map((item, index) => (
-            <li key={index}>
+          {cartItems.map((item) => (
+            <li key={item.recipe_id}>
               <h3>{item.title}</h3>
               <img src={item.image_url} alt={item.title} />
               <p>Publisher: {item.publisher}</p>
+              <p>Quantity: {item.quantity}</p> {/* Display item quantity */}
               <button onClick={() => handleRemoveFromCart(item)} className="remove-button">
                 Remove
               </button>

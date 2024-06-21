@@ -1,18 +1,20 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../redux/reducers/cartReducer';
 import { useNavigate } from 'react-router-dom';
+import './App.css';
 
 const RecipeCard = ({ recipe }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const cartCount = useSelector((state) => state.cart.count); // Retrieve cart count from Redux state
 
   const checkRecipeAvailableAndNavigate = () => {
     navigate(`/recipe/${recipe.recipe_id}`);
   };
 
   const handleAddToCart = () => {
-    dispatch(addToCart(recipe)); 
+    dispatch(addToCart(recipe));
   };
 
   return (
@@ -27,7 +29,7 @@ const RecipeCard = ({ recipe }) => {
         View More
       </span>
       <button onClick={handleAddToCart} className="add-to-cart-button">
-        Add to Cart
+        Add to Cart {cartCount > 0 && `(${cartCount})`}
       </button>
     </div>
   );
