@@ -1,7 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const RecipeCard = ({ recipe }) => {
+  const navigate = useNavigate()
+  const checkRecipeAvaialbleAndNavigate = () => {
+    navigate(`/recipe/${recipe.recipe_id}`)
+  }
+
   return (
     <div className="recipe-card">
       <h2>{recipe.title}</h2>
@@ -10,9 +15,9 @@ const RecipeCard = ({ recipe }) => {
       <a href={recipe.source_url} target="_blank" rel="noopener noreferrer" className="button">
         View Recipe
       </a>
-      <Link to={`/recipe/${recipe.recipe_id}`} className="view-ingredients-link">
+      <span onClick={checkRecipeAvaialbleAndNavigate} className="view-ingredients-link">
         View More
-      </Link>
+      </span>
     </div>
   );
 };
