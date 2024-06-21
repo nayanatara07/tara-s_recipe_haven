@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import SearchBar from './SearchBar';
 import RecipeCard from './RecipeCard';
+import { Link } from 'react-router-dom';
 import './App.css';
 
-const AppContent = () => {
+const AppContent = ({ onLogout, onAddToCart }) => {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -40,8 +41,13 @@ const AppContent = () => {
 
   return (
     <div className="App">
-      <h1>TARA'S RECIPES</h1>
-      <SearchBar onSearch={handleSearch} />
+      <div className="header">
+        <h1>TARA'S RECIPES</h1>
+        <Link to="/cart" className="view-cart-button">
+          View Cart
+        </Link>
+        <SearchBar onSearch={handleSearch} />
+      </div>
       {loading ? (
         <p className="loading">Loading...</p>
       ) : error ? (
@@ -50,11 +56,14 @@ const AppContent = () => {
         <div className="recipe-container">
           {recipes.length > 0 ? (
             recipes.map((recipe) => (
-              <RecipeCard key={recipe.recipe_id} recipe={recipe} />
+              <RecipeCard key={recipe.recipe_id} recipe={recipe} onAddToCart={onAddToCart} />
             ))
           ) : null}
         </div>
       )}
+      <button onClick={onLogout} className="logout-button">
+        Logout
+      </button>
     </div>
   );
 };

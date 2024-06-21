@@ -1,11 +1,13 @@
+// Components/RecipeCard.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const RecipeCard = ({ recipe }) => {
-  const navigate = useNavigate()
-  const checkRecipeAvaialbleAndNavigate = () => {
-    navigate(`/recipe/${recipe.recipe_id}`)
-  }
+const RecipeCard = ({ recipe, onAddToCart }) => {
+  const navigate = useNavigate();
+
+  const checkRecipeAvailableAndNavigate = () => {
+    navigate(`/recipe/${recipe.recipe_id}`);
+  };
 
   return (
     <div className="recipe-card">
@@ -15,9 +17,12 @@ const RecipeCard = ({ recipe }) => {
       <a href={recipe.source_url} target="_blank" rel="noopener noreferrer" className="button">
         View Recipe
       </a>
-      <span onClick={checkRecipeAvaialbleAndNavigate} className="view-ingredients-link">
+      <span onClick={checkRecipeAvailableAndNavigate} className="view-ingredients-link">
         View More
       </span>
+      <button onClick={() => onAddToCart(recipe)} className="add-to-cart-button">
+        Add to Cart
+      </button>
     </div>
   );
 };

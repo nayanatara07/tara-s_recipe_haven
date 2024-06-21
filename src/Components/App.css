@@ -188,6 +188,25 @@ h1 {
   background-color: #0056b3;
 }
 
+.add-to-cart-button {
+  padding: 8px 16px;
+  font-size: 1rem;
+  background-color: #28a745;
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  min-width: 100px;
+  margin-top: 10px;
+}
+
+.add-to-cart-button:hover {
+  background-color: #218838;
+}
+
 .recipe-card ul {
   list-style-type: none;
   padding: 0;
@@ -311,4 +330,56 @@ h1 {
 
 .recipe-detail-page a:hover {
   text-decoration: underline;
+}
+
+/* Cart Page Styles */
+.cart-page {
+  text-align: center;
+  padding: 20px;
+}
+
+.cart-page h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.cart-page ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.cart-page li {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.cart-page img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.back-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+.logout-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 5px 10px;
+  max-width: 100px;
+
 }
