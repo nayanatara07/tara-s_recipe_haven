@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../redux/actions/cartActions';
 import SearchBar from './SearchBar';
 import RecipeCard from './RecipeCard';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './App.css';
 
-const AppContent = ({ onLogout, onAddToCart }) => {
+const AppContent = ({ onLogout }) => {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const fetchRecipes = async (searchQuery) => {
     setLoading(true);
@@ -39,13 +43,22 @@ const AppContent = ({ onLogout, onAddToCart }) => {
     fetchRecipes(searchQuery.trim());
   };
 
+  const handleAddToCart = (recipe) => {
+    dispatch(addToCart(recipe));
+  };
+
   return (
     <div className="App">
+      <div className="header-buttons">
+        <button onClick={() => navigate('/cart')} className="view-cart-button">
+          View Cart
+        </button>
+        <button onClick={onLogout} className="logout-button">
+          Logout
+        </button>
+      </div>
       <div className="header">
         <h1>TARA'S RECIPES</h1>
-        <Link to="/cart" className="view-cart-button">
-          View Cart
-        </Link>
         <SearchBar onSearch={handleSearch} />
       </div>
       {loading ? (
@@ -56,14 +69,11 @@ const AppContent = ({ onLogout, onAddToCart }) => {
         <div className="recipe-container">
           {recipes.length > 0 ? (
             recipes.map((recipe) => (
-              <RecipeCard key={recipe.recipe_id} recipe={recipe} onAddToCart={onAddToCart} />
+              <RecipeCard key={recipe.recipe_id} recipe={recipe} onAddToCart={() => handleAddToCart(recipe)} />
             ))
           ) : null}
         </div>
       )}
-      <button onClick={onLogout} className="logout-button">
-        Logout
-      </button>
     </div>
   );
 };

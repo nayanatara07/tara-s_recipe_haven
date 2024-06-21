@@ -1,4 +1,4 @@
-// Components/RecipeCard.js
+// src/components/RecipeCard.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 

@@ -1,12 +1,16 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { removeFromCart } from '../redux/actions/cartActions';
 import './App.css';
 
-const CartPage = ({ cart, onRemoveFromCart }) => {
+const CartPage = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const cart = useSelector((state) => state.cart.items);
 
   const handleRemoveFromCart = (index) => {
-    onRemoveFromCart(index);
+    dispatch(removeFromCart(index));
   };
 
   return (

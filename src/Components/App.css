@@ -10,6 +10,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  position: relative; 
 }
 
 /* Navigation Styles */
@@ -334,33 +335,71 @@ h1 {
 
 /* Cart Page Styles */
 .cart-page {
-  text-align: center;
+  max-width: 800px;
+  margin: 20px auto;
   padding: 20px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
 .cart-page h2 {
   font-size: 2rem;
+  color: #333;
   margin-bottom: 20px;
+  text-align: center;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
 }
 
 .cart-page ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
 .cart-page li {
-  font-size: 1.1rem;
-  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.cart-page li:last-child {
+  border-bottom: none;
 }
 
 .cart-page img {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  max-width: 100px;
+  height: auto;
   object-fit: cover;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
-.back-button {
+.cart-page p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.cart-page .remove-button {
+  padding: 4px 8px; 
+  font-size: 0.9rem;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 3px; 
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cart-page .remove-button:hover {
+  background-color: #c82333;
+}
+
+.cart-page .back-button {
   padding: 10px 20px;
   font-size: 1rem;
   background-color: #007bff;
@@ -369,17 +408,55 @@ h1 {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-top: 20px;
 }
 
-.back-button:hover {
+.cart-page .back-button:hover {
   background-color: #0056b3;
 }
 
-.logout-button {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  padding: 5px 10px;
-  max-width: 100px;
+/* Header Styles */
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
+.header-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* View Cart Button Styles */
+.view-cart-button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  max-width: 100px;
+  margin-right: 10px; 
+}
+
+.view-cart-button:hover {
+  background-color: #0056b3;
+}
+
+/* Logout Button Styles */
+.logout-button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  max-width: 100px;
+}
+
+.logout-button:hover {
+  background-color: #0056b3;
 }
