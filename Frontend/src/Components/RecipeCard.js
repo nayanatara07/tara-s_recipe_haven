@@ -7,7 +7,7 @@ import './App.css';
 const RecipeCard = ({ recipe }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [itemQuantity, setItemQuantity] = useState(0); 
+  const [itemQuantity, setItemQuantity] = useState(0);
 
   const cartItems = useSelector((state) => state.cart.items);
   const cartCount = useSelector((state) => state.cart.count);
@@ -25,7 +25,7 @@ const RecipeCard = ({ recipe }) => {
 
   const handleAddToCart = () => {
     dispatch(addToCart(recipe));
-    setItemQuantity(itemQuantity + 1); 
+    setItemQuantity(itemQuantity + 1);
   };
 
   return (

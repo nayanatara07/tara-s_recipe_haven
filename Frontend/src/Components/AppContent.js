@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { addToCart } from '../redux/reducers/cartReducer';
 import SearchBar from './SearchBar';
 import RecipeCard from './RecipeCard';
-import CartButton from './CartButton'; 
+import CartButton from './CartButton';
 import { useNavigate } from 'react-router-dom';
 import './App.css';
 
@@ -51,7 +51,7 @@ const AppContent = ({ onLogout }) => {
   return (
     <div className="App">
       <div className="header-buttons">
-        <CartButton /> 
+        <CartButton />
         <button onClick={onLogout} className="logout-button">
           Logout
         </button>

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './Components/HomePage';
-import LoginPage from './Components/LoginPage';
-import RegisterPage from './Components/Register';
-import AppContent from './Components/AppContent';
-import RecipeDetailPage from './Components/RecipeDetailPage';
-import CartPage from './Components/CartPage';
-import './Components/App.css';
+import HomePage from '../src/Components/HomePage';
+import LoginPage from '../src/Components/LoginPage';
+import RegisterPage from '../src/Components/Register';
+import AppContent from '../src/Components/AppContent';
+import RecipeDetailPage from '../src/Components/RecipeDetailPage';
+import CartPage from '../src/Components/CartPage';
+import '../src/Components/App.css';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

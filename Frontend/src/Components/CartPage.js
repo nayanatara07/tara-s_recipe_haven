@@ -23,7 +23,7 @@ const CartPage = () => {
               <h3>{item.title}</h3>
               <img src={item.image_url} alt={item.title} />
               <p>Publisher: {item.publisher}</p>
-              <p>Quantity: {item.quantity}</p> 
+              <p>Quantity: {item.quantity}</p>
               <button onClick={() => handleRemoveFromCart(item)} className="remove-button">
                 Remove
               </button>
