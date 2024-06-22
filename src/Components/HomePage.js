@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './HomePage.css';
-import { FaUtensils } from 'react-icons/fa'; // Importing an icon from react-icons
+import { FaUtensils } from 'react-icons/fa'; 
 
 function HomePage() {
   return (

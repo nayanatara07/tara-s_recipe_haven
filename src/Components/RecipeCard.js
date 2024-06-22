@@ -7,16 +7,13 @@ import './App.css';
 const RecipeCard = ({ recipe }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [itemQuantity, setItemQuantity] = useState(0); // Local state to track quantity for this recipe item
+  const [itemQuantity, setItemQuantity] = useState(0); 
 
-  // Retrieve cart items and count from Redux state
   const cartItems = useSelector((state) => state.cart.items);
   const cartCount = useSelector((state) => state.cart.count);
 
-  // Find if this recipe is already in the cart to set initial quantity
   const existingCartItem = cartItems.find((item) => item.recipe_id === recipe.recipe_id);
   if (existingCartItem) {
-    // Initialize local state with existing quantity from cart
     if (itemQuantity === 0) {
       setItemQuantity(existingCartItem.quantity);
     }
@@ -28,7 +25,7 @@ const RecipeCard = ({ recipe }) => {
 
   const handleAddToCart = () => {
     dispatch(addToCart(recipe));
-    setItemQuantity(itemQuantity + 1); // Increment local quantity state
+    setItemQuantity(itemQuantity + 1); 
   };
 
   return (
