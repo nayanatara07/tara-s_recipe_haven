@@ -3,24 +3,24 @@
 .home-page {
   text-align: center;
   padding: 20px;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); 
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Roboto', sans-serif; 
+  font-family: 'Roboto', sans-serif;
 }
 
 .home-content {
-  background-color: white; 
+  background-color: white;
   padding: 40px 60px;
   border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   max-width: 500px;
   width: 100%;
-  animation: fadeIn 1s ease-out; 
+  animation: fadeIn 1s ease-out;
 }
 
 @keyframes fadeIn {
@@ -37,31 +37,35 @@
 .home-icon {
   font-size: 3em;
   margin-bottom: 20px;
-  color: #3498db; 
+  color: #3498db;
 }
 
 .home-title {
   font-size: 2.5em;
   margin-bottom: 10px;
-  color: #2c3e50; 
+  color: #2c3e50;
   font-weight: bold;
 }
 
 .home-subtitle {
   font-size: 1.2em;
   margin-bottom: 30px;
-  color: #7f8c8d; 
+  color: #7f8c8d;
 }
 
-.login-button-container {
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
   margin-top: 30px;
 }
 
-.login-button {
+.button-container .login-button,
+.button-container .register-button {
   padding: 15px 30px;
   font-size: 1em;
   cursor: pointer;
-  background-color: #3498db; 
+  background-color: #3498db;
   border: none;
   border-radius: 30px;
   color: white;
@@ -69,7 +73,8 @@
   font-weight: bold;
 }
 
-.login-button:hover {
+.button-container .login-button:hover,
+.button-container .register-button:hover {
   background-color: #2980b9;
-  transform: scale(1.05); 
+  transform: scale(1.05);
 }

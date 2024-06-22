@@ -15,13 +15,8 @@ const LoginPage = ({ onLogin }) => {
       return;
     }
 
-    if (password.length < 6) {
-      setError('Password must be at least 6 characters long');
-      return;
-    }
-
     setError('');
-    onLogin();
+    onLogin({ name, password });
     navigate('/app');
   };
 
