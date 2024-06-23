@@ -4,20 +4,41 @@ import './Login.css';
 import { FaUser, FaLock } from 'react-icons/fa';
 
 const LoginPage = ({ onLogin }) => {
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    if (name === '' || password === '') {
-      setError('Name and password are required');
+  const handleLogin = async () => {
+    if (username === '' || password === '') {
+      setError('Username and password are required');
       return;
     }
 
     setError('');
-    onLogin({ name, password });
-    navigate('/app');
+
+    try {
+      const response = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      console.log('Response status:', response.status);
+
+      if (response.ok) {
+        onLogin({ username, password });
+        navigate('/app');
+      } else {
+        const data = await response.json();
+        setError(data.message);
+      }
+    } catch (error) {
+      console.error('Error logging in:', error);
+      setError('Server error. Please try again later.');
+    }
   };
 
   return (
@@ -28,9 +49,9 @@ const LoginPage = ({ onLogin }) => {
         <FaUser className="input-icon" />
         <input
           type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
       </div>
       <div className="input-container">

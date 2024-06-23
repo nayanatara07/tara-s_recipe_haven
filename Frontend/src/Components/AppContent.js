@@ -18,8 +18,11 @@ const AppContent = ({ onLogout }) => {
     setLoading(true);
     try {
       const response = await fetch(`https://forkify-api.herokuapp.com/api/search?q=${searchQuery}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch recipes');
+      }
       const data = await response.json();
-      if (data && data.recipes) {
+      if (data.recipes.length > 0) {
         setRecipes(data.recipes);
         setError('');
       } else {
@@ -63,14 +66,16 @@ const AppContent = ({ onLogout }) => {
       {loading ? (
         <p className="loading">Loading...</p>
       ) : error ? (
-        <p className="loading">{error}</p>
+        <p className="error">{error}</p>
       ) : (
         <div className="recipe-container">
           {recipes.length > 0 ? (
             recipes.map((recipe) => (
               <RecipeCard key={recipe.recipe_id} recipe={recipe} onAddToCart={() => handleAddToCart(recipe)} />
             ))
-          ) : null}
+          ) : (
+            <p>No recipes found</p>
+          )}
         </div>
       )}
     </div>

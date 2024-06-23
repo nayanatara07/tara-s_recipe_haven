@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Login.css'; 
+import './Login.css';
 import { FaUser, FaLock, FaEnvelope, FaPhone } from 'react-icons/fa';
 
 const RegisterPage = ({ onRegister }) => {
   const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
@@ -12,8 +13,8 @@ const RegisterPage = ({ onRegister }) => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleRegister = () => {
-    if (name === '' || email === '' || phone === '' || password === '' || confirmPassword === '') {
+  const handleRegister = async () => {
+    if (name === '' || username === '' || email === '' || phone === '' || password === '' || confirmPassword === '') {
       setError('All fields are required');
       return;
     }
@@ -29,8 +30,28 @@ const RegisterPage = ({ onRegister }) => {
     }
 
     setError('');
-    onRegister({ name, email, phone, password });
-    navigate('/login'); 
+
+    try {
+      const response = await fetch('http://localhost:5000/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, username, email, phone, password }),
+      });
+
+      console.log('Response status:', response.status);
+
+      if (response.ok) {
+        navigate('/login');
+      } else {
+        const data = await response.json();
+        setError(data.message);
+      }
+    } catch (error) {
+      console.error('Error registering:', error);
+      setError('Server error. Please try again later.');
+    }
   };
 
   return (
@@ -44,6 +65,15 @@ const RegisterPage = ({ onRegister }) => {
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
+        />
+      </div>
+      <div className="input-container">
+        <FaUser className="input-icon" />
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
       </div>
       <div className="input-container">
