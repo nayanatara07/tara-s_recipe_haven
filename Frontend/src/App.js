@@ -18,16 +18,7 @@ function App() {
   };
 
   const handleLogin = (user) => {
-    const isRegistered = registeredUsers.some(
-      (registeredUser) =>
-        registeredUser.name === user.name && registeredUser.password === user.password
-    );
-
-    if (isRegistered) {
-      setIsLoggedIn(true);
-    } else {
-      alert('Invalid login credentials');
-    }
+    setIsLoggedIn(true);
   };
 
   const handleLogout = () => {
