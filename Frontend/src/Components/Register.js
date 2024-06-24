@@ -43,6 +43,7 @@ const RegisterPage = ({ onRegister }) => {
       console.log('Response status:', response.status);
 
       if (response.ok) {
+        localStorage.setItem('username', username);
         navigate('/login');
       } else {
         const data = await response.json();

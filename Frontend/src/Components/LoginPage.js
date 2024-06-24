@@ -29,6 +29,7 @@ const LoginPage = ({ onLogin }) => {
       console.log('Response status:', response.status);
 
       if (response.ok) {
+        localStorage.setItem('username', username);
         onLogin({ username, password });
         navigate('/app');
       } else {
