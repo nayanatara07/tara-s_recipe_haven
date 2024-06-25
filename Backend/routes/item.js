@@ -5,8 +5,8 @@ const {
   getItemById,
   createItem,
   updateItem,
-  deleteItem
-} = require('../controllers/itemController');
+  deleteItemById
+} = require('../controllers/itemContoller');
 
 // Get all items
 router.get('/', getAllItems);
@@ -21,6 +21,6 @@ router.post('/', createItem);
 router.put('/:id', updateItem);
 
 // Delete an item
-router.delete('/:id', deleteItem);
+router.delete('/:id', deleteItemById);
 
 module.exports = router;

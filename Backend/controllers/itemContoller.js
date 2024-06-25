@@ -1,6 +1,6 @@
 // controllers/itemController.js
 
-const Item = require('../models/item');
+const Item = require('../models/itemModel');
 
 // Get all items
 exports.getAllItems = async (req, res) => {
@@ -30,6 +30,7 @@ exports.getItemById = async (req, res) => {
 exports.createItem = async (req, res) => {
     const { name, description, price, category, imageUrl } = req.body;
     try {
+        if (!name) return res.status(400).json({ message: 'Name is required' });
         const newItem = new Item({ name, description, price, category, imageUrl });
         await newItem.save();
         res.status(201).json(newItem);
@@ -61,17 +62,18 @@ exports.updateItem = async (req, res) => {
     }
 };
 
-// Delete an item
-exports.deleteItem = async (req, res) => {
+// Delete an item by ID
+exports.deleteItemById = async (req, res) => {
     const { id } = req.params;
     try {
-        const item = await Item.findById(id);
-        if (!item) return res.status(404).json({ message: 'Item not found' });
+        const item = await Item.findByIdAndDelete(id);
+        if (!item) {
+            return res.status(404).json({ message: 'Item not found' });
+        }
 
-        await item.remove();
         res.status(200).json({ message: 'Item deleted successfully' });
     } catch (error) {
-        console.error(error);
+        console.error('Error deleting item:', error);
         res.status(500).json({ message: 'Server error' });
     }
 };

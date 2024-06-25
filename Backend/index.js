@@ -22,8 +22,8 @@ mongoose.connection.on('error', (err) => {
 });
 
 app.use('/auth', require('./routes/auth'));
-app.use('/cart', require('./routes/cart'));
-app.use('/item', require('./routes/item'));
+app.use('/carts', require('./routes/cart'));
+app.use('/items', require('./routes/item'));
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
