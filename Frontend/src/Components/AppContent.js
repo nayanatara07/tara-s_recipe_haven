@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../redux/reducers/cartReducer";
+import { addToCart,  clearCart } from "../redux/reducers/cartReducer";
 import SearchBar from "./SearchBar";
 import RecipeCard from "./RecipeCard";
 import CartButton from "./CartButton";
@@ -10,6 +10,7 @@ const AppContent = ({ onLogout }) => {
 	const [recipes, setRecipes] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState("");
+	const dispatch = useDispatch();
 
 	const fetchRecipes = async (searchQuery) => {
 		setLoading(true);
@@ -47,6 +48,11 @@ const AppContent = ({ onLogout }) => {
 
 		fetchRecipes(searchQuery.trim());
 	};
+
+	const handleLogout = () => {
+		dispatch(clearCart());
+		onLogout();
+	  };
 
 	return (
 		<div className="App">

@@ -11,11 +11,15 @@ import AppContent from "../src/Components/AppContent";
 import RecipeDetailPage from "../src/Components/RecipeDetailPage";
 import CartPage from "../src/Components/CartPage";
 import "../src/Components/App.css";
+import { useDispatch } from "react-redux";
+import { clearCart } from "../src/redux/reducers/cartReducer";
+
 
 function App() {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [registeredUsers, setRegisteredUsers] = useState([]);
 	const [cart, setCart] = useState([]);
+	const dispatch = useDispatch();
 
 	const handleRegister = (user) => {
 		setRegisteredUsers([...registeredUsers, user]);
@@ -27,6 +31,7 @@ function App() {
 
 	const handleLogout = () => {
 		setIsLoggedIn(false);
+		dispatch(clearCart()); 
 	};
 
 	const handleRemoveFromCart = (index) => {
