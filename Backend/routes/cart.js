@@ -1,11 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/userModel");
-const emailjs = require("emailjs-com");
-
-const serviceID = process.env.EMAILJS_SERVICE_ID;
-const templateID = process.env.EMAILJS_TEMPLATE_ID;
-const emailUserID = process.env.EMAILJS_USER_ID;
+const Order = require("../models/orderModel"); 
 
 router.post("/addToCart/:userId", async (req, res) => {
   const { userId } = req.params;
@@ -93,32 +89,42 @@ router.post("/checkout/:userId", async (req, res) => {
       return res.status(404).json({ error: "User not found" });
     }
 
-    user.cart = user.cart.map((item) => ({ ...item, locked: true }));
+    const orderItems = user.cart.map(item => ({
+      dish_id: item.dish_id,
+      name: item.name,
+      quantity: item.quantity,
+      price: item.price,
+      image_url: item.image_url
+    }));
 
+    const newOrder = new Order({
+      userId: user._id,
+      items: orderItems,
+      orderDate: new Date(),
+    });
+
+    await newOrder.save();
+
+    user.cart = [];
     await user.save();
 
-    const emailParams = {
-      to_email: user.email,
-      username: user.username,
-      cartItems: user.cart.map((item) => `
-        <div>
-          <p>${item.name}</p>
-          <p>Quantity: ${item.quantity}</p>
-          <p>Price: ${item.price}</p>
-          <img src="${item.image_url}" alt="${item.name}" />
-        </div>
-      `).join(""),
-    };
+    res.status(200).json({ message: "Checkout successful, order placed" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
-    emailjs.send(serviceID, templateID, emailParams, emailUserID)
-      .then(() => {
-        console.log("Email sent successfully!");
-        res.status(200).json({ message: "Checkout successful, items locked and email sent" });
-      })
-      .catch((error) => {
-        console.error("Failed to send email:", error);
-        res.status(500).json({ error: "Failed to send email" });
-      });
+router.get("/orders/:userId", async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const orders = await Order.find({ userId });
+
+    if (!orders) {
+      return res.status(404).json({ error: "No orders found for user" });
+    }
+
+    res.status(200).json(orders);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
