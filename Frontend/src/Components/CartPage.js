@@ -12,7 +12,10 @@ const CartPage = () => {
 		localStorage.getItem("user")
 	)._id;
 
+	console.log(cartItems);
+
 	const handleRemoveFromCart = async (recipe_id) => {
+		console.log("recipe_id--->", recipe_id);
 		dispatch(removeFromCart({ recipe_id }));
 		try {
 			const response = await fetch(
@@ -48,8 +51,7 @@ const CartPage = () => {
 							<p>Quantity: {item.quantity}</p>
 							<button
 								onClick={() => handleRemoveFromCart(item.recipe_id)}
-								className="remove-button"
-							>
+								className="remove-button">
 								Remove
 							</button>
 						</li>

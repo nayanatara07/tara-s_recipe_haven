@@ -42,9 +42,25 @@ const cartSlice = createSlice({
       state.items = [];
       state.count = 0;
     },
-  },
+    addAllToCart: (state, action) => {
+      action.payload.forEach((newItem) => {
+        let item = {
+          recipe_id: newItem.dish_id,
+          title: newItem.name,
+          publisher: newItem.publisher,
+          image_url: newItem.image,
+          quantity: newItem.quantity,
+        };
+        state.items.push({ ...item });
+
+      });
+
+
+      state.count = action.payload.length;
+    }
+  }
 });
 
-export const { addToCart, removeFromCart, increment, clearCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, increment, clearCart, addAllToCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

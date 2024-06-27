@@ -66,6 +66,8 @@ router.post("/login", async (req, res) => {
 
 		const user = await User.findOne({ username });
 		console.log("user found", { user });
+		let cartItems = user.cart;
+		console.log("cartItems-->", cartItems);
 		if (!user) {
 			console.log(
 				"Invalid credentials for username:",
@@ -95,6 +97,7 @@ router.post("/login", async (req, res) => {
 		});
 		res.status(200).json({
 			message: "Login successful",
+			cart: cartItems,
 			user: userWithoutPassword,
 		});
 	} catch (error) {

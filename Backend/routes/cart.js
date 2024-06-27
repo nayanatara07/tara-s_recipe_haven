@@ -6,10 +6,11 @@ const User = require("../models/userModel");
 router.post("/addToCart/:userId", async (req, res) => {
 	const { userId } = req.params; 
 	const { dish } = req.body; 
-	console.log(req.body);
-	console.log(req.params);
+	// console.log(req.body);
+	// console.log(req.params);
 	try {
 		const user = await User.findById(userId);
+		console.log("User -->", user);
 
 		if (!user) {
 			return res.status(404).json({ error: "User not found" });
@@ -20,6 +21,7 @@ router.post("/addToCart/:userId", async (req, res) => {
 		);
 
 		if (existingCartItem) {
+			console.log("item exits")
 			existingCartItem.quantity += 1;
 		} else {
 			user.cart.push({ ...dish });
@@ -31,6 +33,7 @@ router.post("/addToCart/:userId", async (req, res) => {
 			.status(201)
 			.json({ message: "Item added to cart", user });
 	} catch (err) {
+		// console.log(err);
 		res.status(500).json({ error: err.message });
 	}
 });

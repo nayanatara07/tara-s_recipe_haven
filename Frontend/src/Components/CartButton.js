@@ -5,10 +5,14 @@ import "./App.css";
 
 const CartButton = () => {
 	const navigate = useNavigate();
-	const itemCount = useSelector((state) => state.cart.count);
-
+	const cartItems = useSelector((state) => state.cart.items);
+	const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+  
+	console.log("itemCount-->", itemCount);
+	console.log("cart-->", cartItems);
+  
 	const handleNavigateToCart = () => {
-		navigate("/cart");
+	  navigate("/cart");
 	};
 
 	return (
