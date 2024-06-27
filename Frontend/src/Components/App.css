@@ -459,3 +459,98 @@ h1 {
 .logout-button:hover {
   background-color: #0056b3;
 }
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.confirm-button,
+.cancel-button,
+.nav-button,
+.checkout-button {
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+  flex: 1;
+  max-width: 150px;
+}
+
+.confirm-button {
+  background: #28a745;
+  color: white;
+}
+
+.confirm-button:hover {
+  background: #218838;
+}
+
+.cancel-button {
+  background: #dc3545;
+  color: white;
+}
+
+.cancel-button:hover {
+  background: #c82333;
+}
+
+.nav-button {
+  background: #007bff;
+  color: white;
+}
+
+.nav-button:hover {
+  background: #0056b3;
+}
+
+.checkout-button {
+  background: #ffc107;
+  color: black;
+}
+
+.checkout-button:hover {
+  background: #e0a800;
+}
+
+.remove-button {
+  background: #ffc107;
+  color: black;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.remove-button:hover {
+  background: #e0a800;
+}
