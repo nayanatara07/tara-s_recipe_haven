@@ -619,6 +619,7 @@ h1 {
 .order-page {
   max-width: 1000px;
   margin: 20px auto;
+  height: auto;
   padding: 20px;
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

@@ -8,7 +8,7 @@ const orderSchema = new mongoose.Schema({
       name: String,
       quantity: Number,
       price: Number,
-      image: String
+      image_url: String
     }
   ],
   orderDate: { type: Date, default: Date.now },

@@ -46,7 +46,7 @@ const OrderPage = () => {
                   <td>{new Date(order.orderDate).toLocaleString()}</td>
                   <td>{item.name}</td>
                   <td>
-                    <img src={item.image} alt={item.name} style={{ width: '100px', height: 'auto' }} />
+                    <img src={item.image_url} alt={item.name} style={{ width: '100px', height: 'auto' }} />
                   </td>
                   <td>{item.quantity || 0}</td>
                   <td>Rs.100</td>
