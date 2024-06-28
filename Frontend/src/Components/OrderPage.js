@@ -36,6 +36,7 @@ const OrderPage = () => {
               <th>Dish Name</th>
               <th>Image</th>
               <th>Quantity</th>
+              <th>Cost</th>
             </tr>
           </thead>
           <tbody>
@@ -48,6 +49,7 @@ const OrderPage = () => {
                     <img src={item.image} alt={item.name} style={{ width: '100px', height: 'auto' }} />
                   </td>
                   <td>{item.quantity || 0}</td>
+                  <td>Rs.100</td>
                 </tr>
               ))
             ))}
