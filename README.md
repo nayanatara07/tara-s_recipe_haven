@@ -1,6 +1,6 @@
 # Tara's Recipe Haven
 
-Welcome to Tara's Recipe Haven/*(https://tara-s-recipe-haven-2zfmdt2la-nayanataras-projects.vercel.app/)*/, a comprehensive web application designed to make your culinary journey delightful and organized. Built using the powerful MERN stack (MongoDB, Express.js, React, and Node.js), this project showcases a seamless user experience for discovering, managing, and ordering recipes.
+Welcome to Tara's Recipe Haven, a comprehensive web application designed to make your culinary journey delightful and organized. Built using the powerful MERN stack (MongoDB, Express.js, React, and Node.js), this project showcases a seamless user experience for discovering, managing, and ordering recipes.
 
 ## Features
 
