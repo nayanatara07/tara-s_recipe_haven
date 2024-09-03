@@ -20,6 +20,10 @@ mongoose.connection.on("error", (err) => {
 	console.error("MongoDB connection error:", err);
 });
 
+app.use("/health", (req, res) => {
+	res.send("Server is running");
+});
+
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/cart", require("./routes/cart"));
 
