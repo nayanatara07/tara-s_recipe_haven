@@ -36,7 +36,7 @@ const RecipeCard = ({ recipe }) => {
 		setItemQuantity(itemQuantity + 1);
 		try {
 			const response = await fetch(
-				`http://localhost:8080/api/cart/addToCart/${
+				`https://tara-s-recipe-haven-backend.vercel.app/api/cart/addToCart/${
 					JSON.parse(localStorage.getItem("user"))._id
 				}`,
 				{
