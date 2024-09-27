@@ -14,8 +14,9 @@ const CartPage = () => {
   const handleRemoveFromCart = async (recipe_id) => {
     dispatch(removeFromCart({ recipe_id }));
     try {
-      const response = await fetch(`http://localhost:8080/api/cart/removeFromCart/${userId}/${recipe_id}`, {
-        method: 'DELETE',
+      const response = await fetch(`https://tara-s-recipe-haven-backend.vercel.app/api/cart/removeFromCart/${userId}/${recipe_id}`, {
+      // const response = await fetch(`${process.env.SERVER_URL}/api/cart/removeFromCart/${userId}/${recipe_id}`, {
+      method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -33,7 +34,7 @@ const CartPage = () => {
 
   const handleCheckout = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/api/cart/checkout/${userId}`, {
+      const response = await fetch(`https://tara-s-recipe-haven-backend.vercel.app/api/cart/checkout/${userId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
