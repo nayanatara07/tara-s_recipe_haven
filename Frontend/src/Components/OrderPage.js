@@ -10,7 +10,7 @@ const OrderPage = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/api/cart/orders/${userId}`);
+        const response = await fetch(`https://tara-s-recipe-haven-backend.vercel.app/api/cart/orders/${userId}`);
         const data = await response.json();
         if (response.ok) {
           setOrders(data);
