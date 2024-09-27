@@ -7,7 +7,11 @@ const app = express();
 const port = process.env.PORT || 8081;
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+	origin: "*",
+	credentials: true,
+	
+}));
 
 const mongodbUrl = process.env.MONGODB_URL;
 mongoose.connect(mongodbUrl);
